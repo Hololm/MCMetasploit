@@ -1,3 +1,8 @@
+import requests
+import pyNBT
+import cryptography
+
+
 def main():
     pass
     #aaaa
@@ -5,4 +10,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
