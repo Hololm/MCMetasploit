@@ -5,6 +5,7 @@ import sys
 import re
 from optparse import OptionParser
 
+import minecraft.networking.packets
 from minecraft import authentication
 from minecraft.exceptions import YggdrasilError
 from minecraft.networking.connection import Connection
@@ -122,6 +123,7 @@ def main():
                 connection.write_packet(packet)
             else:
                 packet = serverbound.play.ChatPacket()
+                packet = minecraft.networking.packets.ChatPacket()
                 packet.message = text
                 connection.write_packet(packet)
         except KeyboardInterrupt:
