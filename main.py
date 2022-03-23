@@ -13,6 +13,7 @@ load_dotenv()
 
 
 def main():
+  print("Hello user, enter your username below")
     """auth_token = authentication.AuthenticationToken()
     try:
         auth_token.authenticate(os.getenv("USERNAME"), os.getenv("PASSWORD"))
@@ -22,7 +23,16 @@ def main():
     print("Logged in as %s..." % auth_token.username)
     connection = Connection(
         "ip here", 25565, auth_token=auth_token)"""
-
+  print("exploit choices are-")
+  input == str("which would you like to use")
+  if input == "":
+    print("")
+  elif input == "":
+    print("")
+  elif input == "":
+    print("")
+  else:
+    print("input invalid")
 
 if __name__ == '__main__':
     main()
