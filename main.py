@@ -13,7 +13,7 @@ load_dotenv()
 
 
 def main():
-    auth_token = authentication.AuthenticationToken()
+    """auth_token = authentication.AuthenticationToken()
     try:
         auth_token.authenticate(os.getenv("USERNAME"), os.getenv("PASSWORD"))
     except YggdrasilError as e:
@@ -21,7 +21,7 @@ def main():
         sys.exit()
     print("Logged in as %s..." % auth_token.username)
     connection = Connection(
-        "ip here", 25565, auth_token=auth_token)
+        "ip here", 25565, auth_token=auth_token)"""
 
 
 if __name__ == '__main__':
