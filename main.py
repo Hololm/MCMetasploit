@@ -9,12 +9,39 @@ from minecraft.networking.connection import Connection
 from minecraft.networking.packets import Packet, clientbound, serverbound
 from dotenv import load_dotenv
 import time
+import tabulate
+import importlib
+import inspect
 
 
 load_dotenv()
 
 
 def main():
+
+    x: list = os.listdir("modules")
+    x.remove("schema.py")
+    modules = []
+    for i in x:
+        if i[-3:] == ".py":
+            y = importlib.import_module('modules.%s' % i[:-3])
+        try:
+            if inspect.isclass(y.Exploit):
+                modules.append(y)
+            continue
+        except (AttributeError, NameError):
+            print("no module in file", i)
+            x.remove(i)
+        continue
+
+    for y in modules:
+        k = y.Exploit()
+        print(k.name, k.description)
+
+    # table = [[i.name, i.description]]
+
+
+
     #: exploits: litebans sql dump, holographics dir traversal, log4j
     print("Logging in...")
 
@@ -30,7 +57,6 @@ def main():
     time.sleep(1)
     os.system('clear')
 
-    #: do loading and formatting here
 
     #connection = Connection("ip here", 25565, auth_token=auth_token)
 
