@@ -14,19 +14,19 @@ import importlib
 import inspect
 
 
-load_dotenv()
+load_dotenv()  #: loads variables from .env
 
 
 def main():
 
-    x: list = os.listdir("modules")
+    x: list = os.listdir("modules")  #: lists all files in the modules folder
     x.remove("schema.py")
     modules = []
     for i in x:
-        if i[-3:] == ".py":
-            y = importlib.import_module('modules.%s' % i[:-3])
+        if i[-3:] == ".py":  #: checks if file contains .py
+            y = importlib.import_module('modules.%s' % i[:-3])  #: removes .py from the file
             try:
-                if inspect.isclass(y.Exploit):
+                if inspect.isclass(y.Exploit):  #: checks if class 'Exploit' is in file
                     modules.append(y)
             except (AttributeError, NameError):
                 print("no module in file", i)
@@ -36,8 +36,6 @@ def main():
         k = y.Exploit()
         table.append([k.name, k.description])
     print(tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
-
-
 
     #: exploits: litebans sql dump, holographics dir traversal, log4j
     print("Logging in...")
