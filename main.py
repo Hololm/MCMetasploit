@@ -9,7 +9,7 @@ from minecraft.networking.connection import Connection
 from minecraft.networking.packets import Packet, clientbound, serverbound
 from dotenv import load_dotenv
 import time
-import tabulate
+from tabulate import tabulate
 import importlib
 import inspect
 
@@ -28,17 +28,13 @@ def main():
             try:
                 if inspect.isclass(y.Exploit):
                     modules.append(y)
-                continue
             except (AttributeError, NameError):
                 print("no module in file", i)
-                x.remove(i)
-        continue
 
     for y in modules:
         k = y.Exploit()
-        print(k.name, k.description)
-
-    # table = [[i.name, i.description]]
+        table = [[k.name, k.description]]
+        print(tabulate(table))
 
 
 
