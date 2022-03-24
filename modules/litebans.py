@@ -4,7 +4,7 @@ import minecraft.networking.packets
 
 class Exploit:
     """Exploit schema"""
-    def __init__(self, client: Connection, query: str):
+    def __init__(self, client: Connection=None, query: str=None):
         self.name = "Litebans < v2.3.10 SQL Injection"
         self.description = "Execute SQL queries on Litebans DB."
         self.query = query

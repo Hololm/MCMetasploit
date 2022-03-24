@@ -25,13 +25,13 @@ def main():
     for i in x:
         if i[-3:] == ".py":
             y = importlib.import_module('modules.%s' % i[:-3])
-        try:
-            if inspect.isclass(y.Exploit):
-                modules.append(y)
-            continue
-        except (AttributeError, NameError):
-            print("no module in file", i)
-            x.remove(i)
+            try:
+                if inspect.isclass(y.Exploit):
+                    modules.append(y)
+                continue
+            except (AttributeError, NameError):
+                print("no module in file", i)
+                x.remove(i)
         continue
 
     for y in modules:
