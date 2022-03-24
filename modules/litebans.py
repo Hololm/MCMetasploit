@@ -11,7 +11,6 @@ class Exploit:
         self.client = client
         self.success = False
 
-    @staticmethod
     def waitForResponse(self):
         #: check for flag
         pass
