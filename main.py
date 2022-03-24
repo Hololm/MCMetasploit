@@ -31,10 +31,11 @@ def main():
             except (AttributeError, NameError):
                 print("no module in file", i)
 
+    table = []
     for y in modules:
         k = y.Exploit()
-        table = [[k.name, k.description]]
-        print(tabulate(table))
+        table.append([k.name, k.description])
+    print(tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
 
 
 
@@ -43,7 +44,9 @@ def main():
 
     auth_token = authentication.AuthenticationToken()
     try:
-        auth_token.authenticate(os.getenv("USERNAME"), os.getenv("PASSWORD"))
+        email = os.getenv("EMAIL")
+        password = os.getenv("PASSWORD")
+        auth_token.authenticate(email, password)
     except YggdrasilError as e:
         print(e)
         sys.exit()
@@ -52,10 +55,6 @@ def main():
     print("Logged in as %s..." % auth_token.username)
     time.sleep(1)
     os.system('clear')
-
-
-    #connection = Connection("ip here", 25565, auth_token=auth_token)
-
 
 if __name__ == '__main__':
     main()
