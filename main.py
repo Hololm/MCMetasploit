@@ -30,13 +30,7 @@ def main():
                 if inspect.isclass(y.Exploit):  #: checks if class 'Exploit' is in file
                     modules.append(y)
             except (AttributeError, NameError):
-                print("no module in file", i)
-
-    table = []
-    for y in modules:
-        k = y.Exploit()
-        table.append([k.name, k.description])
-    print(tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
+                pass
 
     #: exploits: litebans sql dump, holographics dir traversal, log4j
     print("Logging in...")
@@ -50,10 +44,14 @@ def main():
         print(e)
         sys.exit()
 
-    os.system('clear')
     print("Logged in as %s..." % auth_token.username)
     time.sleep(1)
-    os.system('clear')
+
+    table = []
+    for y in modules:
+        k = y.Exploit()
+        table.append([k.name, k.description])
+    print(tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
 
 
 if __name__ == '__main__':
