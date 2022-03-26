@@ -7,6 +7,7 @@ import time
 import random
 import json
 import string
+from colorama import Fore, Back, Style, init
 
 
 class Exploit(BaseExploit):
@@ -35,7 +36,7 @@ class Exploit(BaseExploit):
                 self.cmdDelete = True
 
             if "Lines of the hologram" in chat_packet.json_data:
-                print('Lines of hologram: ')
+                print(Fore.LIGHTWHITE_EX + 'Lines of hologram: ')
                 self.cmdGet = True
 
             if self.cmdGet:

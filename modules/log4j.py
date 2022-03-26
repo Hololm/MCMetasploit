@@ -1,6 +1,7 @@
 from minecraft.networking.connection import Connection
 import minecraft.networking.packets
 import subprocess
+from colorama import Fore, Back, Style, init
 
 
 class Exploit:

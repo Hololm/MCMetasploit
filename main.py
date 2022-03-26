@@ -12,6 +12,7 @@ import time
 from tabulate import tabulate
 import importlib
 import inspect
+from colorama import Fore, Back, Style, init
 
 
 load_dotenv()  #: loads variables from .env
@@ -44,16 +45,16 @@ def main():
         print(e)
         sys.exit()
 
-    print("Logged in as %s..." % auth_token.username)
+    print(Fore.LIGHTGREEN_EX + "Logged in as %s..." % auth_token.username)
     time.sleep(1)
 
     table = []
     for y in modules:
         k = y.Exploit()
         table.append([k.name, k.description])
-    print(tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
+    print(Fore.LIGHTWHITE_EX + tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
 
-    id = int(input('Choose an exploit: '))
+    id = int(input(Fore.LIGHTYELLOW_EX + 'Choose an exploit: '))
     exploit = modules[id]
     params = []
     funcparams = [i for i in inspect.getmembers(exploit.Exploit()) if not i[0].startswith('_') if not inspect.ismethod(i[1])]
@@ -67,11 +68,11 @@ def main():
             continue
 
         if x[1] is None:
-            data = input('{}: '.format(x[0]))
+            data = input('{}: '.format(x[0].title()))
             params.append(data)
 
     success, message = exploit.Exploit(*tuple(params)).execute()
-    print(success, message)
+    print(Fore.LIGHTGREEN_EX + "{}, {}".format(success, message))
 
 
 if __name__ == '__main__':
