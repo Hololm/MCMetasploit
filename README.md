@@ -4,6 +4,8 @@ MCMetasploit is a project intended to scan for vulnerabilities in a Minecraft se
 
 Currently, there are three exploits with more to be added in the future.
 
+Note that this program only works with unmigrated accounts. If you migrated your account to Microsoft, it will not work.
+
 ## How to Use
 
 Create a ``.env`` file and write
