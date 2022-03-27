@@ -13,15 +13,15 @@ class BaseExploit:
 
         if self.client:
             self.client.register_packet_listener(
-                self.onJoin, minecraft.networking.packets.JoinGamePacket)
+                self.onJoin, minecraft.networking.packets.JoinGamePacket)  #: sends join game packet to server
 
             self.client.register_packet_listener(
-                self.onLeave, minecraft.networking.packets.DisconnectPacket)
+                self.onLeave, minecraft.networking.packets.DisconnectPacket)  #: sends disconnect packet
 
     def addEvent(self, function, event: Packet):
         self.client.register_packet_listener(function, event)
 
-    def onJoin(self, packet: minecraft.networking.packets.JoinGamePacket):
+    def onJoin(self, packet: minecraft.networking.packets.JoinGamePacket):  #: sends join game packet to server
         print('Connected to server. Gamemode: {}'.format(packet.game_mode))
         self.joined = True
 

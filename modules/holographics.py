@@ -52,7 +52,7 @@ class Exploit(BaseExploit):
         while not self.joined:
             time.sleep(0.1)
 
-        holoName = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+        holoName = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))  #: randomizes name
         command = minecraft.networking.packets.ChatPacket()  #: chat packet structure
 
         command.message = "/hd create %s" % holoName  #: creates hologram

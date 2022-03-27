@@ -51,7 +51,7 @@ def main():
     table = []
     for y in modules:
         k = y.Exploit()
-        table.append([k.name, k.description])
+        table.append([k.name, k.description])  #: adds the name and description of exploit every iteration
     print(Fore.LIGHTWHITE_EX + tabulate(table, headers=['ID', 'Name', 'Description'], showindex="always", tablefmt="fancy_grid"))
 
     id = int(input(Fore.LIGHTYELLOW_EX + 'Choose an exploit: '))

