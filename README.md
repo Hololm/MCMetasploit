@@ -21,11 +21,11 @@ Choose from the table above with the specified **ID**. You will be asked to inpu
 
 ## Holographics
 
-The program will ask for a specific directory. The start directory is in the Holographic Displays plugin folder located at ``./plugins/Holographic Displays``. By using ``../`` one time, it will go back to the plugins folder located ``./plugins``. Another ``../`` and you'll be in the default Minecraft server folder where all files are located.
+The module will ask for a specific directory. The start directory is in the Holographic Displays plugin folder located at ``./plugins/Holographic Displays``. By using ``../`` one time, it will go back to the plugins folder located ``./plugins``. Another ``../`` and you'll be in the default Minecraft server folder where all files are located.
 
 ## Litebans
 
-This project will ask for a SQL query in relation to the Litebans DB.
+This module will ask for a SQL query in relation to the Litebans DB.
 
 The schema for the DB is:
 - litebans_bans
@@ -49,3 +49,11 @@ Example:
 [22:31:26] [Client thread/INFO]: [CHAT] |3 |2022-03-17 13:25:58.758|cat      |8b476e65-a1c9-4677-867b-6712382c537f|127.0.0.1   |
 [22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
 ```
+
+# Log4J
+
+This module is a POC for CVE-2021-44228. This allows remote code execution on vulnerable java applications. Simply start the module, and it will return a shell from a victim.
+
+# Adding more modules
+
+If you would like to add more modules for yourself, or the project, simply make a new python file in the modules folder. Make a new class and name it Exploit, with it being a child class of BaseExploit. This child class provides base functionality for writing exploit modules. Pass through the client parent class parameter, and start writing away. Use our modules (especially holographics) for examples on how to write a module.
