@@ -22,3 +22,28 @@ Choose from the table above with the specified **ID**. You will be asked to inpu
 ## Holographics
 
 The program will ask for a specific directory. The start directory is in the Holographic Displays plugin folder located at ``./plugins/Holographic Displays``. By using ``../`` one time, it will go back to the plugins folder located ``./plugins``. Another ``../`` and you'll be in the default Minecraft server folder where all files are located.
+
+## Litebans
+
+This project will ask for a SQL query in relation to the Litebans DB.
+The schema for the DB is:
+- litebans_bans
+- litebans_history
+- litebans_kicks
+- litebans_mutes
+- litebans_servers
+- litebans_sync
+- litebans_warnings
+The command parses the query, and executes it, sending the results in a table format in that.
+Example:
+```
+[22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
+[22:31:26] [Client thread/INFO]: [CHAT] |ID|DATE                   |NAME     |UUID                                |IP          |
+[22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
+[22:31:26] [Client thread/INFO]: [CHAT] |1 |2022-03-17 13:22:38.924|CONSOLE  |CONSOLE                             |#           |
+[22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
+[22:31:26] [Client thread/INFO]: [CHAT] |2 |2022-03-17 13:24:39.78 |Dog      |4fd3a2a8-bfe6-4144-94ac-bd04bb2e505b|127.0.0.1   |
+[22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
+[22:31:26] [Client thread/INFO]: [CHAT] |3 |2022-03-17 13:25:58.758|cat      |8b476e65-a1c9-4677-867b-6712382c537f|127.0.0.1   |
+[22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
+```
