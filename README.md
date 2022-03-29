@@ -26,6 +26,7 @@ The program will ask for a specific directory. The start directory is in the Hol
 ## Litebans
 
 This project will ask for a SQL query in relation to the Litebans DB.
+
 The schema for the DB is:
 - litebans_bans
 - litebans_history
@@ -35,6 +36,7 @@ The schema for the DB is:
 - litebans_sync
 - litebans_warnings
 The command parses the query, and executes it, sending the results in a table format in that.
+
 Example:
 ```
 [22:31:26] [Client thread/INFO]: [CHAT] +--+-----------------------+---------+------------------------------------+------------+
