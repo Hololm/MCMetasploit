@@ -35,7 +35,8 @@ The schema for the DB is:
 - litebans_servers
 - litebans_sync
 - litebans_warnings
-The command parses the query, and executes it, sending the results in a table format in that.
+
+The command executed (/litebans sqlexec <query>) parses the query, and executes it, sending the results in a table format in that.
 
 Example:
 ```
