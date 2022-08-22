@@ -1,10 +1,13 @@
 # MCMetasploit
 
-MCMetasploit is a project intended to scan for vulnerabilities in a Minecraft server using a headless client.
+MCMetasploit is a project intended to scan for vulnerabilities in a Minecraft server using a headless client. It was made as part of a school hackathon that tied with first place.
 
 Currently, there are three exploits with more to be added in the future.
 
 Note that this program only works with unmigrated accounts. If you migrated your account to Microsoft, it will not work.
+
+## Preview
+[![MCMetasploit](https://res.cloudinary.com/marcomontalbano/image/upload/v1661142425/video_to_markdown/images/youtube--hAd-D52k7ZQ-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=hAd-D52k7ZQ "MCMetasploit")
 
 ## How to Use
 
@@ -14,8 +17,6 @@ EMAIL=<Email>
 PASSWORD=<Password>
 ```
 This is so your client can log in to execute the exploit.
-
-![image](https://user-images.githubusercontent.com/71950247/160255222-2dc73f09-67e6-435f-8e1d-d35e7c2e9297.png)
 
 Choose from the table above with the specified **ID**. You will be asked to input a **server ip** and **port**.
 
